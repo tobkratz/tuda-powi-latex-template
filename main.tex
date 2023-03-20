@@ -1,0 +1,113 @@
+\documentclass[
+	ngerman, 
+	fontsize=9pt,
+	accentcolor=1b,%9c,% Farbe für Hervorhebungen auf Basis der Deklarationen in den
+	type=intern,
+	marginpar=false,
+	]{tudapub}
+
+\geometry{
+ reset,
+ a4paper,
+ total={170mm,257mm},
+ left=25mm,
+ right=30mm,
+ top=20mm
+}
+
+\usepackage[german]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{setspace}
+\usepackage[acronym,toc,shortcuts]{glossaries}
+\makeglossaries
+\include{acronym.tex} %Abkürzungen
+
+
+\usepackage{natbib} 
+\bibliographystyle{tud} %Custom Zitierstil
+\setcitestyle{aysep={},notesep={: }} % Anpassen des Zitierens
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\begin{document}
+\title{Titel: \\ Untertitel}
+\subtitle{Proseminar: \textquote{Einführung in die Politikwissenschaften} - Dr. phil. Jörg Kemmerzell}
+\author{VORNAME NACHNAME (123456) - VORNAME.NACHNAME@stud.tu-darmstadt.de }
+\date{31. März 2023 - Wintersemester 2022/23} % Ohne Angabe wird automatisch das heutige Datum eingefügt
+
+\maketitle
+\spacing{1.5} 
+\fontsize{12pt}{14.4}\selectfont %Anpassung Schriftgröße und Zeilenabstand 
+
+\tableofcontents
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 		Einleitung		%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Einleitung}
+\begin{changemargin}{0.5cm}{0.5cm}
+
+Bli Bla Blub
+
+Abkürzug: \ac{TU} Darmstadt \\ \acp{TU} (plural) \\ \ac{TU}
+
+
+\end{changemargin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 	Forschungsstand		%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Forschungsstand}
+\begin{changemargin}{0.5cm}{0.5cm}
+
+Bli Bla Blub
+
+\end{changemargin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 		Hauptteil		%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Hauptteil}
+\begin{changemargin}{0.5cm}{0.5cm}
+
+Hier ist ganz viel Platz für schlaue Dinge \citep{murphyGlobalGovernancePoorly2000}
+
+\end{changemargin}
+
+\subsection{Untertitel}
+\begin{changemargin}{0.5cm}{0.5cm}
+
+Bli Bla Blub \citep{jorkeGrosseDemokratieUber2019}
+
+\end{changemargin}
+
+\subsubsection{UnterUntertitel}
+\begin{changemargin}{0.5cm}{0.5cm}
+
+Bli Bla Blub
+
+\end{changemargin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 		Fazit			%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Fazit und Ausblick}
+\begin{changemargin}{0.5cm}{0.5cm}
+
+Bli Bla Blub
+
+\end{changemargin}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 		Ende			%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{end.tex}
+\end{document}
