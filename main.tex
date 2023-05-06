@@ -30,9 +30,11 @@
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist 
 
+\renewcommand{\thesection}{\S \arabic{section}} % Paragraphen 
+
 \begin{document}
 \title{Titel: \\ Untertitel}
-\subtitle{Proseminar: \textquote{Einführung in die Politikwissenschaften} - Dr. phil. Jörg Kemmerzell}
+\subtitle{Proseminar: \textquote{Siegelseminar} - Dr. phil. Georg Elser}
 \author{VORNAME NACHNAME (123456) - VORNAME.NACHNAME@stud.tu-darmstadt.de }
 \date{31. März 2023 - Wintersemester 2022/23} % Ohne Angabe wird automatisch das heutige Datum eingefügt
 
@@ -91,7 +93,7 @@ Bli Bla Blub \citep{jorkeGrosseDemokratieUber2019}
 \subsubsection{UnterUntertitel}
 \begin{changemargin}{0.5cm}{0.5cm}
 
-Bli Bla Blub
+Bli Bla Blub\footnote{Fußnoten gehen auch!}
 
 \end{changemargin}
 
