@@ -4,34 +4,57 @@
 	accentcolor=1b,%9c,% Farbe für Hervorhebungen auf Basis der Deklarationen in den
 	type=intern,
 	marginpar=false,
+	custommargins=geometry
 	]{tudapub}
 
 \geometry{
  reset,
  a4paper,
  total={170mm,257mm},
- left=25mm,
- right=30mm,
- top=20mm
+ left=15mm,
+ right=15mm,
+ top=25mm,
+ bottom=25mm
 }
 
-\usepackage[german]{babel}
+\usepackage[english]{babel}
 \usepackage[autostyle]{csquotes}
 \usepackage{setspace}
 \usepackage[acronym,toc,shortcuts]{glossaries}
 \makeglossaries
 \include{acronym.tex} %Abkürzungen
 
-
+%%%%% 		Zitate		%%%%%% 
 \usepackage{natbib} 
 \bibliographystyle{tud} %Custom Zitierstil
 \setcitestyle{aysep={},notesep={: }} % Anpassen des Zitierens
-
-\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
-\let\endchangemargin=\endlist 
+\def\citevgl#1#2{(vgl. \citeauthor{#2} \citeyear{#2}: #1)}
+\def\citevglo#1{(vgl. \citeauthor{#1} \citeyear{#1})}
 
 \renewcommand{\thesection}{\S \arabic{section}} % Paragraphen 
 %\setcounter{secnumdepth}{-2} %Kapitelnummerierung entfernen, jedoch im Inhaltsverzeichnis sichtbark
+
+\def\cm{\list{}{\rightmargin1.5cm\leftmargin1cm}\item[]}
+\let\endcm=\endlist 
+\def\msection#1{\end{cm}\endcm\section{#1}\begin{cm}} %spezielle sections, damit der Text danach eingerückt ist auf leftmargin=2,5,rightmargin=3,0
+\def\msubsection#1{\end{cm}\endcm\subsection{#1}\begin{cm}}
+\def\msubsubsection#1{\end{cm}\endcm\subsubsection{#1}\begin{cm}}
+
+
+%%%%% 		Word Count		%%%%%% 
+\usepackage{moreverb} 
+\immediate\write18{texcount -inc -incbib 
+-sum content.tex > /tmp/wordcount.tex}
+\newcommand\wordcount{
+\verbatiminput{/tmp/wordcount.tex}}
+
+%%%%%		TODOS			%%%%%% -> Remove when exporting
+\paperwidth=\dimexpr \paperwidth + 3cm\relax
+\usepackage{todonotes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% 	 Begin Document 	%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \title{Titel: \\ Untertitel}
@@ -46,71 +69,28 @@
 \tableofcontents
 \newpage
 
+%%%%% 		Word Count		%%%%%%  -> Remove when exporting
 
+\section*{Counts of words} 
+\begin{cm}
+\wordcount	
+\end{cm}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% 		Einleitung		%%%%%% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Einleitung}
-\begin{changemargin}{0.5cm}{0.5cm}
-
-Bli Bla Blub
-
-Abkürzug: \ac{TU} Darmstadt \\ \acp{TU} (plural) \\ \ac{TU}
-
-
-\end{changemargin}
+%%%%%		TODOS			%%%%%% -> Remove when exporting
+\listoftodos
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% 	Forschungsstand		%%%%%% 
+%%%%% 		Content			%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Forschungsstand}
-\begin{changemargin}{0.5cm}{0.5cm}
-
-Bli Bla Blub
-
-\end{changemargin}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% 		Hauptteil		%%%%%% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Hauptteil}
-\begin{changemargin}{0.5cm}{0.5cm}
-
-Hier ist ganz viel Platz für schlaue Dinge \citep{murphyGlobalGovernancePoorly2000}
-
-\end{changemargin}
-
-\subsection{Untertitel}
-\begin{changemargin}{0.5cm}{0.5cm}
-
-Bli Bla Blub \citep{jorkeGrosseDemokratieUber2019}
-
-\end{changemargin}
-
-\subsubsection{UnterUntertitel}
-\begin{changemargin}{0.5cm}{0.5cm}
-
-Bli Bla Blub\footnote{Fußnoten gehen auch!}
-
-\end{changemargin}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% 		Fazit			%%%%%% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Fazit und Ausblick}
-\begin{changemargin}{0.5cm}{0.5cm}
-
-Bli Bla Blub
-
-\end{changemargin}
+\begin{cm}
+\include{content.tex}
+\end{cm}
+\endcm
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% 		Ende			%%%%%% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \include{end.tex}
+
 \end{document}
