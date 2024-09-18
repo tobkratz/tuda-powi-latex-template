@@ -17,7 +17,7 @@
  bottom=25mm
 }
 
-\usepackage[english]{babel}
+\usepackage[german]{babel}
 \usepackage[autostyle]{csquotes}
 \usepackage{setspace}
 \usepackage[acronym,toc,shortcuts]{glossaries}
@@ -27,6 +27,7 @@
 %%%%% 		Zitate		%%%%%% 
 \usepackage{natbib} 
 \bibliographystyle{tud} %Custom Zitierstil
+\usepackage[nottoc,notlot,notlof]{tocbibind}
 \setcitestyle{aysep={},notesep={: }} % Anpassen des Zitierens
 \def\citevgl#1#2{(vgl. \citeauthor{#2} \citeyear{#2}: #1)}
 \def\citevglo#1{(vgl. \citeauthor{#1} \citeyear{#1})}
